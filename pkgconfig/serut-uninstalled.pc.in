@@ -1,0 +1,12 @@
+# the standard variables don't make sense for an uninstalled copy
+prefix=
+exec_prefix=
+libdir=${pcfiledir}/..
+includedir=${pcfiledir}/..
+
+Name: SerUt Uninstalled
+Description: Serialization Utilities, Not Installed
+Version: @VERSION@
+Requires:
+Libs: ${libdir}/src/libserut.la @SERUTLINKLIBS@
+Cflags: -I${includedir}/src @SERUTINCLUDES@

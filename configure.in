@@ -1,0 +1,42 @@
+AC_INIT(configure.in)
+AM_INIT_AUTOMAKE(serut, 1.0.0)
+
+AC_LANG(C++)
+AC_PROG_CXX
+AM_PROG_LIBTOOL
+
+SERUTLINKLIBS="$LDFLAGS"
+SERUTINCLUDES="$CPPFLAGS"
+
+dnl ---------------------------------------------------------------------------
+dnl Check errut/errorbase.h
+dnl ---------------------------------------------------------------------------
+
+AC_CHECK_HEADER(errut/errorbase.h, [], 
+		[ 
+		 AC_MSG_FAILURE(ErrUt needs to be available. See http://research.edm.uhasselt.be/jori/errut/) 
+		], [])
+
+dnl ---------------------------------------------------------------------------
+dnl Check enut/nutconfig.h
+dnl ---------------------------------------------------------------------------
+
+AC_CHECK_HEADER(enut/nutconfig.h, 
+		[
+		 SERUTLINKLIBS="$SERUTLINKLIBS -lenut"
+		], 
+		[ 
+		 AC_MSG_FAILURE(ENUt needs to be available. See http://research.edm.uhasselt.be/enut/) 
+		], [])
+
+AC_SUBST(SERUTLINKLIBS)
+AC_SUBST(SERUTINCLUDES)
+
+AC_OUTPUT(Makefile \
+	  src/Makefile \
+	  doc/Makefile \
+	  pkgconfig/Makefile \
+	  pkgconfig/serut.pc \
+	  pkgconfig/serut-uninstalled.pc \
+	  )
+
