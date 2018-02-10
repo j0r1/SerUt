@@ -3,7 +3,7 @@
   This file is a part of SerUt, a library containing some serialization
   utilities.
   
-  Copyright (C) 2008 Jori Liesenborgs
+  Copyright (C) 2008-2012 Jori Liesenborgs
 
   Contact: jori.liesenborgs@gmail.com
 
@@ -32,6 +32,7 @@
 
 #define SERUT_TCPSERIALIZER_H
 
+#include "serutconfig.h"
 #include "serializationinterface.h"
 #include <time.h>
 
@@ -44,7 +45,7 @@ namespace serut
 {
 
 /** Serializer which can be used to read from and write to a TCP connection. */
-class TCPSerializer : public SerializationInterface
+class SERUT_IMPORTEXPORT TCPSerializer : public SerializationInterface
 {
 public:
 	/** Construct an instance.

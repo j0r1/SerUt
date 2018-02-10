@@ -3,7 +3,7 @@
   This file is a part of SerUt, a library containing some serialization
   utilities.
   
-  Copyright (C) 2008 Jori Liesenborgs
+  Copyright (C) 2008-2012 Jori Liesenborgs
 
   Contact: jori.liesenborgs@gmail.com
 
@@ -32,13 +32,14 @@
 
 #define SERUT_MEMORYSERIALIZER_H
 
+#include "serutconfig.h"
 #include "serializationinterface.h"
 
 namespace serut
 {
 
 /** A serializer for reading from and writing to memory. */
-class MemorySerializer : public SerializationInterface
+class SERUT_IMPORTEXPORT MemorySerializer : public SerializationInterface
 {
 public:
 	/** Construct an instance.

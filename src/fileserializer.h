@@ -3,7 +3,7 @@
   This file is a part of SerUt, a library containing some serialization
   utilities.
   
-  Copyright (C) 2008 Jori Liesenborgs
+  Copyright (C) 2008-2012 Jori Liesenborgs
 
   Contact: jori.liesenborgs@gmail.com
 
@@ -32,6 +32,7 @@
 
 #define SERUT_FILESERIALIZER_H
 
+#include "serutconfig.h"
 #include "serializationinterface.h"
 #include <stdio.h>
 #include <string>
@@ -40,7 +41,7 @@ namespace serut
 {
 
 /** A serializer for writing to and reading from files. */
-class FileSerializer : public SerializationInterface
+class SERUT_IMPORTEXPORT FileSerializer : public SerializationInterface
 {
 public:
 	/** Specifies the mode in which a file can be opened. */

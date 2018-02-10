@@ -1,6 +1,6 @@
 
                                 SERUT README
-				  (1.0.0)
+				  (1.0.1)
 
 1. INTRODUCTION
 
@@ -32,12 +32,10 @@ archive. The short version is the following:
 The library depends on:
  * ErrUt, which can be found at
    http://research.edm.uhasselt.be/jori/errut/errut.html
- * ENUt, which can be found at
+ * ENUt (optionally), which can be found at
    http://research.edm.uhasselt.be/enut/enut.html
 
-Just use the configure script and make to build the library. Run the 
-configure script with option '--help' to see which options can be 
-specified.
+Build using cmake.
 
 4. CONTACT
 

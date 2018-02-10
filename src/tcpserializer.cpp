@@ -3,7 +3,7 @@
   This file is a part of SerUt, a library containing some serialization
   utilities.
   
-  Copyright (C) 2008 Jori Liesenborgs
+  Copyright (C) 2008-2012 Jori Liesenborgs
 
   Contact: jori.liesenborgs@gmail.com
 
@@ -25,6 +25,9 @@
 */
 
 #include "tcpserializer.h"
+
+#ifdef SERUT_SUPPORT_ENUT
+
 #include <enut/tcpsocket.h>
 
 namespace serut
@@ -86,3 +89,32 @@ bool TCPSerializer::writeBytes(const void *pBuffer, size_t amount)
 }
 
 } // end namespace
+
+#else // No enut support
+
+namespace serut
+{
+
+TCPSerializer::TCPSerializer(nut::TCPSocket *pSocket, bool deleteSocket)
+{
+}
+
+TCPSerializer::~TCPSerializer()
+{
+}
+	
+bool TCPSerializer::readBytes(void *pBuffer, size_t amount)
+{
+	setErrorString("No ENUt support was available at compile time"); 
+	return false;
+}
+
+bool TCPSerializer::writeBytes(const void *pBuffer, size_t amount)
+{
+	setErrorString("No ENUt support was available at compile time"); 
+	return false;
+}
+
+} // end namespace
+
+#endif // SERUT_SUPPORT_ENUT

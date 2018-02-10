@@ -24,18 +24,16 @@
 
 */
 
-#include "dummyserializer.h"
+#ifndef SERUTCONFIG_H
 
-namespace serut
-{
+#define SERUTCONFIG_H
 
-#define DUMMYSERIALIZER_ERRSTR_CANTREAD			"The dummy serializer doesn't support read operations."
-	
-bool DummySerializer::readBytes(void *pBuffer, size_t amount)
-{
-	setErrorString(DUMMYSERIALIZER_ERRSTR_CANTREAD);
-	return false;
-}
+#define SERUT_IMPORT ${SERUT_IMPORT}
+#define SERUT_EXPORT ${SERUT_EXPORT}
+#ifdef SERUT_COMPILING
+	#define SERUT_IMPORTEXPORT SERUT_EXPORT
+#else
+	#define SERUT_IMPORTEXPORT SERUT_IMPORT
+#endif // SERUT_COMPILING
 
-} // end namespace
-
+#endif // SERUTCONFIG_H

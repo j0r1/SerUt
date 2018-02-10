@@ -3,7 +3,7 @@
   This file is a part of SerUt, a library containing some serialization
   utilities.
   
-  Copyright (C) 2008 Jori Liesenborgs
+  Copyright (C) 2008-2012 Jori Liesenborgs
 
   Contact: jori.liesenborgs@gmail.com
 
@@ -32,9 +32,10 @@
 
 #define SERUT_SERIALIZATIONINTERFACE_H
 
+#include "serutconfig.h"
 #include <errut/errorbase.h>
 #include <sys/types.h>
-#include <inttypes.h>
+#include <stdint.h>
 #include <vector>
 
 namespace serut
@@ -53,7 +54,7 @@ namespace serut
  *  is not taken into account and that this package is currently only
  *  useful for communication between systems with the same endianness.
  */
-class SerializationInterface : public errut::ErrorBase
+class SERUT_IMPORTEXPORT SerializationInterface : public errut::ErrorBase
 {
 public:
 	SerializationInterface()						{ }
@@ -74,6 +75,9 @@ public:
 	 */
 	virtual bool writeBytes(const void *pBuffer, size_t amount) = 0;
 
+	/** Write a long double. */
+	bool writeLongDouble(double x)						{ return writeSingle(x); }
+
 	/** Write a double. */
 	bool writeDouble(double x)						{ return writeSingle(x); }
 
@@ -84,6 +88,9 @@ public:
 	bool writeInt32(int32_t x)						{ return writeSingle(x); }
 	
 	/** Write an array of doubles. */
+	bool writeLongDoubles(const long double *pX, size_t amount)		{ return writeArray(pX, amount); }
+
+	/** Write an array of doubles. */
 	bool writeDoubles(const double *pX, size_t amount)			{ return writeArray(pX, amount); }
 
 	/** Write an array of floats. */
@@ -91,6 +98,9 @@ public:
 
 	/** Write an array of 32-bit integers. */
 	bool writeInt32s(const int32_t *pX, size_t amount)			{ return writeArray(pX, amount); }
+
+	/** Write the long doubles stored in the vector. */
+	bool writeLongDoubles(const std::vector<long double> &x)		{ return writeStdVector(x); }
 
 	/** Write the doubles stored in the vector. */
 	bool writeDoubles(const std::vector<double> &x)				{ return writeStdVector(x); }
@@ -104,6 +114,9 @@ public:
 	/** Write a string. */
 	bool writeString(const std::string &x);
 	
+	/** Read a long double. */
+	bool readLongDouble(long double *pX)					{ return readSingle(pX); }
+
 	/** Read a double. */
 	bool readDouble(double *pX)						{ return readSingle(pX); }
 
@@ -113,6 +126,9 @@ public:
 	/** Read a 32-bit integer. */
 	bool readInt32(int32_t *pX)						{ return readSingle(pX); }
 
+	/** Read an array of long doubles. */
+	bool readLongDoubles(long double *pX, size_t amount)			{ return readArray(pX, amount); }
+
 	/** Read an array of doubles. */
 	bool readDoubles(double *pX, size_t amount)				{ return readArray(pX, amount); }
 
@@ -121,6 +137,9 @@ public:
 
 	/** Read an array of 32-bit integers. */
 	bool readInt32s(int32_t *pX, size_t amount)				{ return readArray(pX, amount); }
+
+	/** Read a vector of long doubles (the current size of the vector specifies the amount). */
+	bool readLongDoubles(std::vector<long double> &x)			{ return readStdVector(x); }
 
 	/** Read a vector of doubles (the current size of the vector specifies the amount). */
 	bool readDoubles(std::vector<double> &x)				{ return readStdVector(x); }

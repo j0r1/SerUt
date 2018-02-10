@@ -3,6 +3,10 @@
                                SerUt ChangeLog
 
 
+Version 1.0.1, July 2012
+ * Switched to cmake build system
+ * Made it possible to compile as a DLL in MS-Windows.
+
 Version 1.0.0, March 2008
  * Initial release
 

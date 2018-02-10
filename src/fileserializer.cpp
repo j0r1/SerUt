@@ -3,7 +3,7 @@
   This file is a part of SerUt, a library containing some serialization
   utilities.
   
-  Copyright (C) 2008 Jori Liesenborgs
+  Copyright (C) 2008-2012 Jori Liesenborgs
 
   Contact: jori.liesenborgs@gmail.com
 
@@ -60,11 +60,11 @@ bool FileSerializer::open(const std::string &filename, OpenMode m)
 	std::string modeString;
 	
 	if (m == FileSerializer::ReadOnly)
-		modeString = std::string("r");
+		modeString = std::string("rb");
 	else if (m == FileSerializer::WriteOnly)
-		modeString = std::string("w");
+		modeString = std::string("wb");
 	else
-		modeString = std::string("rw");
+		modeString = std::string("rwb");
 			
 	m_pFile = fopen(filename.c_str(), modeString.c_str());
 	if (m_pFile == 0)

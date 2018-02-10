@@ -3,7 +3,7 @@
   This file is a part of SerUt, a library containing some serialization
   utilities.
   
-  Copyright (C) 2008 Jori Liesenborgs
+  Copyright (C) 2008-2012 Jori Liesenborgs
 
   Contact: jori.liesenborgs@gmail.com
 
@@ -32,6 +32,7 @@
 
 #define SERUT_DUMMYSERIALIZER_H
 
+#include "serutconfig.h"
 #include "serializationinterface.h"
 
 namespace serut
@@ -39,7 +40,7 @@ namespace serut
 
 /** A dummy serializer which simply counts the number of bytes written but does
  *  not actually write any data. */
-class DummySerializer : public SerializationInterface
+class SERUT_IMPORTEXPORT DummySerializer : public SerializationInterface
 {
 public:
 	DummySerializer()								{ m_counter = 0; }
