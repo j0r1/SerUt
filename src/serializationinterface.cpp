@@ -3,7 +3,7 @@
   This file is a part of SerUt, a library containing some serialization
   utilities.
   
-  Copyright (C) 2008-2012 Jori Liesenborgs
+  Copyright (C) 2008-2018 Jori Liesenborgs
 
   Contact: jori.liesenborgs@gmail.com
 

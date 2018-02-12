@@ -6,6 +6,7 @@ set(HEADERS
 	memoryserializer.h
 	serializationinterface.h
 	tcpserializer.h
+	vectorserializer.h
 	${PROJECT_BINARY_DIR}/src/serutconfig.h)
 
 set(SOURCES
@@ -13,7 +14,9 @@ set(SOURCES
 	fileserializer.cpp
 	memoryserializer.cpp
 	serializationinterface.cpp
-	tcpserializer.cpp)
+	tcpserializer.cpp
+	vectorserializer.cpp
+	)
 
 if (MSVC)
 	set(CMAKE_DEBUG_POSTFIX _d)
