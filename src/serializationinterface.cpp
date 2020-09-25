@@ -52,7 +52,7 @@ bool SerializationInterface::writeString(const std::string &x)
 
 bool SerializationInterface::readString(std::string &x)
 {
-	int16_t length;
+	uint16_t length;
 	
 	if (!readSingle(&length))
 		return false;

@@ -3,6 +3,9 @@
                                SerUt ChangeLog
 
 
+Version 1.1.1, September 2020
+ * Bugfix in readString, needed to use uint16_t instead of int16_t
+
 Version 1.1.0, February 2018
  * Added VectorSerializer
 
