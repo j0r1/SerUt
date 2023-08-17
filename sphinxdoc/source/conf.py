@@ -341,7 +341,7 @@ curpath = os.getcwd()
 
 try:
     if os.getenv("READTHEDOCS") == 'True':
-        dstdir = "_build/html"
+        dstdir = os.path.join(os.environ["READTHEDOCS_OUTPUT"], "html")
     else:
         dstdir = "../build/html"
 
@@ -352,6 +352,10 @@ try:
     checkMarkdownSetting()
     changeVersionString()
     subprocess.call("doxygen Doxyfile-changed", shell=True)
+    if not os.path.exists(dstdir):
+        print("Destination directory did not exist, creating it")
+        os.makedirs(dstdir, exist_ok=True)
+
     subprocess.call("mv -f documentation/* {}".format(dstdir), shell=True)
 finally:
     os.chdir(curpath)
